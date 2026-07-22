@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 
 const BACKEND_URL = 'https://urlshortener-api-pek6.onrender.com';
 
 function App() {
   const [activeTab, setActiveTab] = useState('shorten'); // 'shorten' | 'analytics'
+
+  // Ping the backend to wake it up if it's sleeping (common on Render free tier)
+  useEffect(() => {
+    fetch(BACKEND_URL).catch(() => {});
+  }, []);
 
   return (
     <div className="card">
