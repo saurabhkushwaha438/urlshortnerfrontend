@@ -9,15 +9,15 @@ function App() {
   return (
     <div className="card">
       <h1>URL Shortener</h1>
-      
+
       <div className="tabs">
-        <button 
+        <button
           className={`tab ${activeTab === 'shorten' ? 'active' : ''}`}
           onClick={() => setActiveTab('shorten')}
         >
           Shorten URL
         </button>
-        <button 
+        <button
           className={`tab ${activeTab === 'analytics' ? 'active' : ''}`}
           onClick={() => setActiveTab('analytics')}
         >
@@ -60,9 +60,9 @@ function ShortenForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ longUrl })
       });
-      
+
       const data = await response.json();
-      
+
       if (!response.ok) {
         throw new Error(data.message || 'Failed to shorten URL');
       }
@@ -89,10 +89,10 @@ function ShortenForm() {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label className="form-label" htmlFor="longUrl">Enter your long URL</label>
-          <input 
+          <input
             id="longUrl"
-            type="url" 
-            className="form-input" 
+            type="url"
+            className="form-input"
             placeholder="https://example.com/very-long-url"
             value={longUrl}
             onChange={(e) => setLongUrl(e.target.value)}
@@ -109,9 +109,9 @@ function ShortenForm() {
       {result && (
         <div className="result-box">
           <div className="result-title">Your Shortened URL</div>
-          <a 
-            href={`${BACKEND_URL}/${result.shortCode}`} 
-            target="_blank" 
+          <a
+            href={`${BACKEND_URL}/${result.shortCode}`}
+            target="_blank"
             rel="noopener noreferrer"
             className="result-link"
           >
@@ -120,12 +120,12 @@ function ShortenForm() {
           <button className={`copy-btn ${copied ? 'copied' : ''}`} onClick={handleCopy}>
             {copied ? (
               <>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '4px'}}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
                 Copied!
               </>
             ) : (
               <>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '4px'}}><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                 Copy Link
               </>
             )}
@@ -167,7 +167,7 @@ function AnalyticsForm() {
 
     try {
       const response = await fetch(`/api/stats/${codeToFetch}`);
-      
+
       if (!response.ok) {
         throw new Error('Failed to fetch analytics');
       }
@@ -186,10 +186,10 @@ function AnalyticsForm() {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label className="form-label" htmlFor="shortCode">Enter short URL or code</label>
-          <input 
+          <input
             id="shortCode"
-            type="text" 
-            className="form-input" 
+            type="text"
+            className="form-input"
             placeholder="e.g., l or http://.../l"
             value={shortCode}
             onChange={(e) => setShortCode(e.target.value)}
