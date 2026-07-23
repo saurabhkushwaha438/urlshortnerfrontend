@@ -272,6 +272,18 @@ h2 {
   animation: fadeIn 0.3s;
 }
 
+.warning-banner {
+  background-color: #FFF8E1;
+  border-left: 4px solid #FFC107;
+  color: #856404;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  animation: fadeIn 0.5s ease-in;
+}
+
 /* Animations */
 @keyframes spin {
   0% { transform: rotate(0deg); }

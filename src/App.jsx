@@ -15,6 +15,10 @@ function App() {
     <div className="card">
       <h1>URL Shortener</h1>
 
+      <div className="warning-banner">
+        Note: The first request may take 40-50 seconds as the free server wakes up.
+      </div>
+
       <div className="tabs">
         <button
           className={`tab ${activeTab === 'shorten' ? 'active' : ''}`}
